@@ -7,7 +7,7 @@ import { RegisterPage } from "./pages/Register/Register";
 import { Navigate,Outlet ,RouterProvider,createBrowserRouter, } from "react-router-dom"; 
 import { Home } from "./pages/Home/Home";
 function App() {
-  const currentUser = false;
+  const currentUser = true;
   const Layout = ()=>{
     return(
       <div>
