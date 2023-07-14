@@ -1,7 +1,7 @@
 import React from 'react'
-
+import './rightBar.scss'
 export const RightBar = () => {
   return (
-    <div>RightBar</div>
+    <div className='rightBar'>RightBar</div>
   )
 }

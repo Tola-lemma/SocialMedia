@@ -4,7 +4,7 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import GroupAddTwoToneIcon from '@mui/icons-material/GroupAddTwoTone';
 import LocalGroceryStoreTwoToneIcon from '@mui/icons-material/LocalGroceryStoreTwoTone';
 import SlideshowTwoToneIcon from '@mui/icons-material/SlideshowTwoTone';
-import MemoryTwoToneIcon from '@mui/icons-material/MemoryTwoTone';
+import TimerTwoToneIcon from '@mui/icons-material/TimerTwoTone';
 import OndemandVideoTwoToneIcon from '@mui/icons-material/OndemandVideoTwoTone';
 import CurrencyExchangeTwoToneIcon from '@mui/icons-material/CurrencyExchangeTwoTone';
 import MailOutlineTwoToneIcon from '@mui/icons-material/MailOutlineTwoTone';
@@ -42,7 +42,7 @@ export const LeftBar = () => {
           <span>Watch</span>
          </div>
          <div className="item">
-          <MemoryTwoToneIcon style={{color:"blue",width:"30px"}}/>
+          <TimerTwoToneIcon style={{color:"darkblue",width:"30px"}}/>
           <span>Memories</span>
          </div>
         </div>
