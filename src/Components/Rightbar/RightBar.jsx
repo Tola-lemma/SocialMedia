@@ -114,11 +114,31 @@ export const RightBar = () => {
           <div className="user">
             <div className="userInfo">
             <img
+            src={"https://images.pexels.com/photos/6146935/pexels-photo-6146935.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            alt=""
+          />
+          <div className='online'/>
+          <span>Tsehay Kuru</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+            <img
+            src={"https://images.pexels.com/photos/6437845/pexels-photo-6437845.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            alt=""
+          />
+          <div className='online'/>
+          <span>Eden Tamiru</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+            <img
             src={"https://images.pexels.com/photos/7036543/pexels-photo-7036543.jpeg?auto=compress&cs=tinysrgb&w=600"}
             alt=""
           />
           <div className='online'/>
-          <span>Selamawit Tsehayneh</span>
+          <span>Selamawit Abayneh</span>
             </div>
           </div>
           <div className="user">
@@ -129,6 +149,26 @@ export const RightBar = () => {
           />
            <div className='online'/>
           <span>Yeabsira Tesfaye</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+            <img
+            src={"https://images.pexels.com/photos/6286226/pexels-photo-6286226.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            alt=""
+          />
+           <div className='online'/>
+          <span>Getu Haile</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+            <img
+            src={"https://images.pexels.com/photos/7241551/pexels-photo-7241551.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            alt=""
+          />
+           <div className='online'/>
+          <span>Tadesse Tsega</span>
             </div>
           </div>
         </div>

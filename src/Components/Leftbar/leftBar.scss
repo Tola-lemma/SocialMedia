@@ -1,7 +1,7 @@
-// @import "../../style.scss";
+@import "../../style.scss";
 
 .leftBar {
-//   @include themify($themes) {
+  @include themify($themes) {
     flex: 2;
     position: sticky;
     top: 70px;
@@ -25,8 +25,7 @@
         margin: 20px 0px;
         border: none;
         height: 0.5px;
-        background-color: lightgray;
-      //   background-color: themed("border");
+        background-color: themed("border");
       }
 
       .menu {
@@ -66,5 +65,5 @@
         }
       }
     }
-//   }
+  }
 }

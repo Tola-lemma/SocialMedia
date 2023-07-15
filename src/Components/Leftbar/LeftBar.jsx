@@ -1,4 +1,3 @@
-import React from 'react'
 import './leftBar.scss'
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import GroupAddTwoToneIcon from '@mui/icons-material/GroupAddTwoTone';
@@ -13,7 +12,17 @@ import CollectionsTwoToneIcon from '@mui/icons-material/CollectionsTwoTone';
 import SportsEsportsTwoToneIcon from '@mui/icons-material/SportsEsportsTwoTone';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../Context/darkModeContrext';
 export const LeftBar = () => {
+  const { darkMode } = useContext(DarkModeContext);
+
+  const getItemStyle = (color) => {
+    return {
+      color: darkMode ? 'cyan' : color,
+      width: '30px'
+    };
+  };
   return (
     <div className='leftBar'>
       <div className='container'>
@@ -26,23 +35,23 @@ export const LeftBar = () => {
           <span>{"Tola Lemma"}</span>
         </div>
          <div className="item">
-          <PeopleAltTwoToneIcon style={{color:"blue",width:"30px"}}/>
+          <PeopleAltTwoToneIcon style={getItemStyle('blue')}/>
           <span>Friends</span>
          </div>
          <div className="item">
-          <GroupAddTwoToneIcon style={{color:"navy",width:"30px"}}/>
+          <GroupAddTwoToneIcon style={getItemStyle('navy')}/>
           <span>Groups</span>
          </div>
          <div className="item">
-          <LocalGroceryStoreTwoToneIcon style={{color:"darkslateblue",width:"30px"}}/>
+          <LocalGroceryStoreTwoToneIcon style={getItemStyle('darkslateblue')}/>
           <span>Marketplace</span>
          </div>
          <div className="item">
-          <SlideshowTwoToneIcon style={{color:"deeppink",width:"30px"}}/>
+          <SlideshowTwoToneIcon style={getItemStyle('deeppink')}/>
           <span>Watch</span>
          </div>
          <div className="item">
-          <TimerTwoToneIcon style={{color:"darkblue",width:"30px"}}/>
+          <TimerTwoToneIcon style={getItemStyle('darkblue')}/>
           <span>Memories</span>
          </div>
         </div>
@@ -50,23 +59,23 @@ export const LeftBar = () => {
         <div className='menu'>
           <span>Your Shortcuts</span>
           <div className="item">
-          <CalendarMonthTwoToneIcon style={{color:"blue",width:"30px"}}/>
+          <CalendarMonthTwoToneIcon style={getItemStyle('blue')}/>
           <span>Events</span>
          </div>
          <div className="item">
-          <SportsEsportsTwoToneIcon style={{color:"navy",width:"30px"}}/>
+          <SportsEsportsTwoToneIcon style={getItemStyle('navy')}/>
           <span>Gaming</span>
          </div>
          <div className="item">
-          <CollectionsTwoToneIcon style={{color:"darkcyan",width:"30px"}}/>
+          <CollectionsTwoToneIcon style={getItemStyle('darkcyan')}/>
           <span>Gallery</span>
          </div>
          <div className="item">
-          <VideocamTwoToneIcon style={{color:"magenta",width:"30px"}}/>
+          <VideocamTwoToneIcon style={getItemStyle('magenta')}/>
           <span>Videos</span>
          </div>
          <div className="item">
-          <MailOutlineTwoToneIcon style={{color:"indigo",width:"30px"}}/>
+          <MailOutlineTwoToneIcon style={getItemStyle('indigo')}/>
           <span>Messages</span>
          </div>
         </div>
@@ -74,15 +83,15 @@ export const LeftBar = () => {
         <div className='menu'>
           <span>Others</span>
           <div className="item">
-          <CurrencyExchangeTwoToneIcon style={{color:"blue",width:"30px"}}/>
+          <CurrencyExchangeTwoToneIcon style={getItemStyle('blue')}/>
           <span>Fundraiser</span>
          </div>
           <div className="item">
-          <DriveFileRenameOutlineTwoToneIcon style={{color:"darkcyan",width:"30px"}}/>
+          <DriveFileRenameOutlineTwoToneIcon style={getItemStyle('darkcyan')}/>
           <span>Tutorials</span>
          </div>
          <div className="item">
-          <OndemandVideoTwoToneIcon style={{color:"green",width:"30px"}}/>
+          <OndemandVideoTwoToneIcon style={getItemStyle('green')}/>
           <span>Courses</span>
          </div>
         </div>
