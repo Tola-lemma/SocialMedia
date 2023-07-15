@@ -1,0 +1,17 @@
+.home{
+      flex: 3;
+      position: sticky;
+      top: 70px;
+      height: calc(100vh - 80px);
+      overflow: scroll;
+      background-color: themed("bg");
+      color: themed("textColor");
+  
+  //     @include mobile{
+  //       display: none;
+  //     }
+  
+      &::-webkit-scrollbar {
+        display: none;
+      }
+}
