@@ -14,9 +14,10 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../Context/darkModeContrext';
+import { AuthContext } from '../../Context/authContext';
 export const LeftBar = () => {
   const { darkMode } = useContext(DarkModeContext);
-
+  const { currentUser } = useContext(AuthContext);
   const getItemStyle = (color) => {
     return {
       color: darkMode ? 'cyan' : color,
@@ -29,10 +30,12 @@ export const LeftBar = () => {
         <div className="menu">
         <div className="user">
           <img
-            src={"https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            // src={"https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            src={currentUser.profilePic}
             alt=""
           />
-          <span>{"Tola Lemma"}</span>
+          {/* <span>{"Tola Lemma"}</span> */}
+          <span>{currentUser.name}</span>
         </div>
          <div className="item">
           <PeopleAltTwoToneIcon style={getItemStyle('blue')}/>

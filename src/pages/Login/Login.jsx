@@ -1,8 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Context/authContext";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const {login} = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (!username || !password) {
+      setError("Please enter a username and password");
+      return;
+    }
+
+    login({ id:1, name:username});
+    navigate("/");
+  };
   return (
     <div className="login">
       <div className="card">
@@ -21,9 +39,16 @@ export const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <form>
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
-            <button>Login</button>
+            <input type="text" placeholder="username eg. Tola Lemma" 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
+            />
+            <input type="password" placeholder="password" 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
+             {error && <div className="error" style={{color:"red"}}>{error}</div>}
+            <button onClick={handleLogin}>Login</button>
           </form>
         </div>
       </div>

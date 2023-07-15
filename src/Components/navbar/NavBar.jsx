@@ -7,13 +7,19 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../../Context/darkModeContrext";
-// import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../Context/authContext";
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 export const NavBar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
-  // const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const { currentUser,logout } = useContext(AuthContext);
+  const handleLogout =()=>{
+     logout();
+     navigate('/login')
+  }
   return (
     <div className="navbar">
       <div className="left">
@@ -38,12 +44,13 @@ export const NavBar = () => {
         <NotificationsOutlinedIcon />
         <div className="user">
           <img
-            src={"https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?auto=compress&cs=tinysrgb&w=600"}
-            // src={currentUser.profilePic}
+            // src={"https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?auto=compress&cs=tinysrgb&w=600"}
+            src={currentUser.profilePic}
             alt=""
           />
-          {/* <span>{currentUser.name}</span> */}
-          <span>{"Tola Lemma"}</span>
+          <span>{currentUser.name}</span>
+          {/* <span>{"Tola Lemma"}</span> */}
+         <LogoutTwoToneIcon style={{fontSize:"1.2rem",marginLeft:"5px",cursor: "pointer"}} onClick={handleLogout}/>
         </div>
       </div>
     </div>

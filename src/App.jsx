@@ -9,8 +9,9 @@ import { Home } from "./pages/Home/Home";
 import './style.scss';
 import { useContext } from "react";
 import { DarkModeContext } from "./Context/darkModeContrext";
+import { AuthContext } from "./Context/authContext";
 function App() {
-  const currentUser = true;
+  const {currentUser} = useContext(AuthContext);
   const {darkMode} = useContext(DarkModeContext)
   const Layout = ()=>{
     return(
