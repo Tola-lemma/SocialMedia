@@ -1,13 +1,15 @@
 import { AuthContext } from "../../Context/authContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./comments.scss";
 const Comments = () => {
       const {currentUser} = useContext(AuthContext)
   //Temporary
-  const comments = [
+  const [commentInput, setCommentInput] = useState("");
+  const [comments, setComments] = useState([
     {
       id: 1,
-      desc: "Wow! This photo is absolutely breathtaking! The colors, composition, and subject are all perfectly captured. It's like a work of art. Truly amazing! 😍📸",
+      desc:
+        "Wow! This photo is absolutely breathtaking! The colors, composition, and subject are all perfectly captured. It's like a work of art. Truly amazing! 😍📸",
       name: "Tola Lemma",
       userId: 1,
       profilePicture:
@@ -15,19 +17,36 @@ const Comments = () => {
     },
     {
       id: 2,
-      desc: "I'm speechless! This photo is pure magic. The level of detail and the way you've captured the moment is simply outstanding. It evokes such a sense of wonder and beauty. I'm in awe of your talent! 🌟📷",
+      desc:
+        "I'm speechless! This photo is pure magic. The level of detail and the way you've captured the moment is simply outstanding. It evokes such a sense of wonder and beauty. I'm in awe of your talent! 🌟📷",
       name: "Jane Doe",
       userId: 2,
       profilePicture:
         "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
-  ];
+  ]);
+  const handleCommentSubmit = () => {
+    if (commentInput.trim() !== "") {
+      const newComment = {
+        id: comments.length + 1,
+        desc: commentInput,
+        name: currentUser.name,
+        userId: currentUser.id,
+        profilePicture: currentUser.profilePic,
+      };
+
+      setComments((prevComments) => [...prevComments, newComment]);
+      setCommentInput("");
+    }
+  };
   return (
     <div className="comments">
       <div className="write">
         <img src={currentUser.profilePic} alt="" />
-        <input type="text" placeholder="write a comment" />
-        <button>Send</button>
+        <input type="text" placeholder="write a comment"
+        value={commentInput}
+        onChange={(e) => setCommentInput(e.target.value)} />
+        <button onClick={handleCommentSubmit}>Send</button>
       </div>
       {comments.map((comment) => (
         <div className="comment">
