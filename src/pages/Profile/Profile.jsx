@@ -15,7 +15,7 @@ import { useEffect } from "react";
 export const Profile = () => {
   //non interaction
   useEffect(()=>{
-    ReactGA.send(window.location.pathname);
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search, title: "Profile Page" });
   },[])
   const {id}  = useParams();
   const name = id === "1" ? "Tola Wake" : "Merry Ketsela";

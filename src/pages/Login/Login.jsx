@@ -10,7 +10,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   useEffect(()=>{
-    ReactGA.send(window.location.pathname);
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search, title: "Login Page" });
   },[])
   const handleLogin = (e) => {
     e.preventDefault();

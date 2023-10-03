@@ -10,7 +10,7 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   useEffect(()=>{
-    ReactGA.send(window.location.pathname);
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search, title: "Register Page" });
   },[])
   const handleRegister = (e) => {
     e.preventDefault();
