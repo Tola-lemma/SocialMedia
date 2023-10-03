@@ -23,7 +23,7 @@ export const RegisterPage = () => {
     ReactGA.event({
       category: 'User Register',
       action: 'Register Success',
-      label: `Username: ${username}, Email: ${email}, Registration Time: ${registrationTime}`,
+      label: `Username: ${username}, Registration Time: ${registrationTime}`,
     });
     login({ id:1, name:username});
     navigate("/");

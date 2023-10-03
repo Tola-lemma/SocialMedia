@@ -22,7 +22,7 @@ export const Login = () => {
     // Track user login
         ReactGA.event({
           category: 'User Login',
-          action: 'Login',
+          action: 'Login success',
           label: `Username: ${username}`,
           // Include geolocation data
         });
