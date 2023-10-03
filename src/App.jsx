@@ -16,7 +16,7 @@ function App() {
   const {darkMode} = useContext(DarkModeContext)
   useEffect(()=>{
     ReactGA.initialize(process.env.REACT_APP_GA);
-    ReactGA.set({ anonymizeIp: true }); //IP addresses
+    // ReactGA.set({ anonymizeIp: true }); //IP addresses
   },[])
   const Layout = ()=>{
     return(

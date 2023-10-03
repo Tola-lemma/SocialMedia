@@ -10,7 +10,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   useEffect(()=>{
-    ReactGA.send("pageview");
+    ReactGA.send(window.location.pathname);
   },[])
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,31 +20,12 @@ export const Login = () => {
       return;
     }
     // Track user login
-   // Function to get user's geolocation
-const getUserGeolocation = () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        // Send geolocation data along with the login event
         ReactGA.event({
           category: 'User Login',
           action: 'Login',
           label: `Username: ${username}`,
           // Include geolocation data
-          location: `${latitude}, ${longitude}`,
         });
-      },
-      (error) => {
-        console.error("Error getting geolocation:", error);
-      }
-    );
-  } else {
-    console.error("Geolocation is not available in this browser.");
-  }
-};
-// Call this function to get and send geolocation data
-   getUserGeolocation();
 
     login({ id:1, name:username});
     navigate("/");

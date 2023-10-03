@@ -7,7 +7,7 @@ import ReactGA from 'react-ga4'
 export const Home = () => {
   //non interaction 
   useEffect(()=>{
-    ReactGA.send("pageview");
+    ReactGA.send(window.location.pathname);
   },[])
   return (
     <div className="home">
