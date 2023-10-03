@@ -7,12 +7,17 @@ import { RegisterPage } from "./pages/Register/Register";
 import { Navigate,Outlet ,RouterProvider,createBrowserRouter, } from "react-router-dom"; 
 import { Home } from "./pages/Home/Home";
 import './style.scss';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DarkModeContext } from "./Context/darkModeContrext";
 import { AuthContext } from "./Context/authContext";
+import ReactGA from 'react-ga'
 function App() {
   const {currentUser} = useContext(AuthContext);
   const {darkMode} = useContext(DarkModeContext)
+  useEffect(()=>{
+    ReactGA.initialize(process.env.REACT_APP_GA);
+    ReactGA.set({ anonymizeIp: true }); //IP addresses
+  },[])
   const Layout = ()=>{
     return(
       <div className={`theme-${darkMode? "dark":"light"}`}>

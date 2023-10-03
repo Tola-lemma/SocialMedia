@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import "./register.scss";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { AuthContext } from "../../Context/authContext";
+import ReactGA from 'react-ga'
 export const RegisterPage = () => {
   const {login} = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-
+  useEffect(()=>{
+    ReactGA.pageview(window.location.pathname);
+  },[])
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -16,7 +19,12 @@ export const RegisterPage = () => {
       setError("Please enter a username and password");
       return;
     }
-
+    const registrationTime = new Date().toLocaleString(); // Get the current date and time
+    ReactGA.event({
+      category: 'User Register',
+      action: 'Register Success',
+      label: `Username: ${username}, Email: ${email}, Registration Time: ${registrationTime}`,
+    });
     login({ id:1, name:username});
     navigate("/");
   };
@@ -39,13 +47,13 @@ export const RegisterPage = () => {
           <form>
           <input type="text" placeholder="username  eg. Tola Lemma" 
              value={username}
-            onChange={(e) => setUsername(e.target.value)} />
+            onChange={(e) => setUsername(e.target.value)}  required/>
             <input type="email" placeholder="Email"
              value={email}
-             onChange={(e) => setEmail(e.target.value)}  />
+             onChange={(e) => setEmail(e.target.value)}  required/>
             <input type="password" placeholder="Password" 
             value={password}
-            onChange={(e) => setPassword(e.target.value)}/>
+            onChange={(e) => setPassword(e.target.value)} required/>
             {error && <div className="error" style={{color:"red"}}>{error}</div>}
             <button onClick={handleRegister}>Register</button>
           </form>

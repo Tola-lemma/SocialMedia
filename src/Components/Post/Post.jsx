@@ -7,7 +7,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Comments from "../Comments/Comments";
-
+import ReactGA from 'react-ga'
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
 
@@ -46,8 +46,23 @@ const Post = ({ post }) => {
         String(likesCount + 1)
       );
     }
+    //interaction event 
+    ReactGA.event({
+      category: 'Post Interaction',
+      action: liked ? 'Unlike' : 'Like',
+      label: `Post ID: ${post.id}`,
+    });
   };
+  const toggleComments = () => {
+    setCommentOpen(!commentOpen);
 
+    // Track the comments interaction
+    ReactGA.event({
+      category: 'Comment Interaction',
+      action: commentOpen ? 'Close Comments' : 'Open Comments',
+      label: `Comment ID: ${post.id}`,
+    });
+  };
   return (
     <div className="post">
       <div className="container">
@@ -89,7 +104,7 @@ const Post = ({ post }) => {
             )}
             {likesCount} Likes
           </div>
-          <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
+          <div className="item" onClick={toggleComments}>
             <TextsmsOutlinedIcon />
             2 Comments
           </div>

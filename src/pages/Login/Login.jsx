@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { AuthContext } from "../../Context/authContext";
-
+import ReactGA from 'react-ga'
 export const Login = () => {
   const navigate = useNavigate();
   const {login} = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  useEffect(()=>{
+    ReactGA.pageview(window.location.pathname);
+  },[])
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -17,6 +19,32 @@ export const Login = () => {
       setError("Please enter a username and password");
       return;
     }
+    // Track user login
+   // Function to get user's geolocation
+const getUserGeolocation = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        // Send geolocation data along with the login event
+        ReactGA.event({
+          category: 'User Login',
+          action: 'Login',
+          label: `Username: ${username}`,
+          // Include geolocation data
+          location: `${latitude}, ${longitude}`,
+        });
+      },
+      (error) => {
+        console.error("Error getting geolocation:", error);
+      }
+    );
+  } else {
+    console.error("Geolocation is not available in this browser.");
+  }
+};
+// Call this function to get and send geolocation data
+   getUserGeolocation();
 
     login({ id:1, name:username});
     navigate("/");
@@ -41,9 +69,11 @@ export const Login = () => {
           <form>
             <input type="text" placeholder="username eg. Tola Lemma" 
             value={username}
+            required
             onChange={(e) => setUsername(e.target.value)} 
             />
             <input type="password" placeholder="password" 
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />

@@ -10,8 +10,13 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Posts } from "../../Components/Posts/Posts";
 import { useParams } from "react-router-dom";
-
+import ReactGA from 'react-ga'
+import { useEffect } from "react";
 export const Profile = () => {
+  //non interaction
+  useEffect(()=>{
+    ReactGA.pageview(window.location.pathname);
+  },[])
   const {id}  = useParams();
   const name = id === "1" ? "Tola Wake" : "Merry Ketsela";
   const website = id === "1" ? "tolawake.com" : "merryketsela.com";
