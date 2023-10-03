@@ -10,7 +10,7 @@ import './style.scss';
 import { useContext, useEffect } from "react";
 import { DarkModeContext } from "./Context/darkModeContrext";
 import { AuthContext } from "./Context/authContext";
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 function App() {
   const {currentUser} = useContext(AuthContext);
   const {darkMode} = useContext(DarkModeContext)

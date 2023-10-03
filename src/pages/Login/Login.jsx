@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./login.scss";
 import { useContext, useState,useEffect } from "react";
 import { AuthContext } from "../../Context/authContext";
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 export const Login = () => {
   const navigate = useNavigate();
   const {login} = useContext(AuthContext);
@@ -10,7 +10,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   useEffect(()=>{
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.send("pageview");
   },[])
   const handleLogin = (e) => {
     e.preventDefault();

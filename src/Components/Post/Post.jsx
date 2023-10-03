@@ -7,7 +7,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Comments from "../Comments/Comments";
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
 

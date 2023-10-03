@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./register.scss";
 import { useContext, useState,useEffect } from "react";
 import { AuthContext } from "../../Context/authContext";
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 export const RegisterPage = () => {
   const {login} = useContext(AuthContext);
   const [username, setUsername] = useState("");
@@ -10,7 +10,7 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   useEffect(()=>{
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.send("pageview");
   },[])
   const handleRegister = (e) => {
     e.preventDefault();

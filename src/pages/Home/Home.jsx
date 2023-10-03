@@ -3,11 +3,11 @@ import { useEffect } from "react"
 import { Posts } from "../../Components/Posts/Posts"
 import { Stories } from "../../Components/Stories/Stories"
 import "./home.scss"
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 export const Home = () => {
   //non interaction 
   useEffect(()=>{
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.send("pageview");
   },[])
   return (
     <div className="home">
