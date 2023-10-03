@@ -60,7 +60,7 @@ const Post = ({ post }) => {
     ReactGA.event({
       category: 'Comment Interaction',
       action: commentOpen ? 'Close Comments' : 'Open Comments',
-      label: `Comment ID: ${post.id}`,
+      label: `Comment ID: ${post.id},   Posted By: ${post.name}`,
     });
   };
   return (
